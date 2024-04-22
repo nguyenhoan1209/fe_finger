@@ -12,19 +12,22 @@ const LoginPage = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
+
+        let formData = new FormData();
+        formData.append("username", username);
+        formData.append("password", password);
+
+
         const requestOptions = {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: JSON.stringify(
-              `grant_type=&username=${username}&password=${password}&scope=&client_id=&client_secret=`
-            ),
-          };
-        
+            body: formData,
+        };
+
         const response = await fetch("http://210.211.97.224:8004/api/fingerprint/auth", requestOptions);
 
         const data = await response.json();
 
-        if (data) {
+        if (data.status == 0) {
             localStorage.setItem('authToken', JSON.stringify(data));
             setToken(data);
             navigate("/")
