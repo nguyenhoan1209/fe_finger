@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const [token, setToken] = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+
+    const navigate = useNavigate()
 
     const loginUser = async (e) => {
         e.preventDefault();
@@ -23,6 +27,7 @@ const LoginPage = () => {
         if (data) {
             localStorage.setItem('authToken', JSON.stringify(data));
             setToken(data);
+            navigate("/")
         } else {
             console.log('Something went wrong while logging in the user!');
         }
