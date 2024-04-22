@@ -3,6 +3,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import './HomePage.css'
+import Sidebar from "../../components/Sidebar";
 
 const HomePage = () => {
   const [token, setToken] = useContext(AuthContext);
@@ -17,15 +18,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div>HomePage</div>
-      {token ? (
-        <div>
-          Hello {token.msg}
-          <button onClick={logoutUser}>Logout user</button>
-        </div>
-      ) : (
-        <div>Goto login</div>
-      )}
+      <Sidebar/>
     </>
   );
 };
