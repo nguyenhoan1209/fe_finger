@@ -3,6 +3,10 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import './HomePage.css'
+import Hero from "../../components/Hero/Hero";
+import { Separator } from "@radix-ui/react-separator";
+import AboutUs from "../../components/AboutUs/AboutUs";
+import Card from "../../components/Card";
 
 const HomePage = () => {
   const [token, setToken] = useContext(AuthContext);
@@ -17,15 +21,11 @@ const HomePage = () => {
 
   return (
     <>
-      <div>HomePage</div>
-      {token ? (
-        <div>
-          Hello {token.msg}
-          <button onClick={logoutUser}>Logout user</button>
-        </div>
-      ) : (
-        <div>Goto login</div>
-      )}
+    <Hero/>
+    <Separator/>
+    <AboutUs/>
+    <Separator/>
+    <Card/>
     </>
   );
 };
