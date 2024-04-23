@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import FingerRegisterPage from "./pages/FingerRegisterPage/FingerRegisterPage";
 
 import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./utils/PrivateRoute";
 
 
 const App = () => {
@@ -17,6 +19,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/finger-register" element={<PrivateRoute><FingerRegisterPage/></PrivateRoute>} />
           </Routes>
         </AuthProvider>
       </Router>
