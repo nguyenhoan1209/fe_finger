@@ -33,7 +33,7 @@ const HomePage = () => {
                   className="block w-full rounded px-12 py-3 text-sm font-medium text-yellow-600 shadow hover:text-green-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
                   href="#" // add link to the doc of tutorial if you have
                 >
-                  Learn More
+                 Compamy History
                 </a>
               </div>
             </div>
@@ -47,7 +47,7 @@ const HomePage = () => {
                     <div className="text-center lg:text-left ">
                       <div className="mb-10 lg:mb-0 ">
                         <h1 className="mt-0 mb-3 text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-[40px] md:leading-tight text-white ">
-                          Strarting sign up right now in the box
+                          Strarting learn more about finger ID
                         </h1>
                         <p className="w-full text-base font-medium leading-relaxed sm:text-lg sm:leading-relaxed text-white"></p>
                       </div>
@@ -59,7 +59,7 @@ const HomePage = () => {
                         className="font-semibold rounded-lg mx-auto inline-flex items-center justify-center bg-white py-4 px-9 hover:bg-opacity-90"
                         href="#" //add the direct link to the sign up page
                       >
-                        Sign Up
+                        Lear More
                       </a>
                     </div>
                   </div>
