@@ -13,9 +13,9 @@ const HomePage = () => {
             <div className="mx-auto max-w-xl text-center">
               <h1 className="text-3xl font-extrabold sm:text-5xl">
                 FingerID
-                <strong className="font-extrabold text-yellow-700 sm:block">
+                <strong className="mt-3  font-extrabold text-yellow-700 sm:block text-4xl">
                   {" "}
-                  Soultions make diffrences{" "}
+                  Solutions make diffrences{" "}
                 </strong>
               </h1>
               <p className="mt-4 sm:text-2xl/relaxed">
