@@ -8,9 +8,9 @@ const FingerRegisterPage = () => {
   const [token, setToken] = useContext(AuthContext);
   const [cif, setCif] = useState("");
   const [fingerid, setFingerid] = useState("");
-  const [img1, setImg1] = useState("");
-  const [img2, setImg2] = useState("");
-  const [img3, setImg3] = useState("");
+  const [img1, setImg1] = useState(null);
+  const [img2, setImg2] = useState(null);
+  const [img3, setImg3] = useState(null);
 
   const registerFinger = async () => {
     const requestOptions = {
@@ -30,7 +30,10 @@ const FingerRegisterPage = () => {
     } else {
       console.log("Something went register finger!");
     }
+  };
 
+  const submitFormHandle = async (e) =>{
+    e.preventDefault();
     if (img1 && img2 && img3) {
       const fingerForm = new FormData();
       fingerForm.append("cif", cif);
@@ -61,7 +64,8 @@ const FingerRegisterPage = () => {
         });
       }
     }
-  };
+  
+  }
 
   return (
     <>
@@ -69,6 +73,7 @@ const FingerRegisterPage = () => {
 
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <form onSubmit={submitFormHandle}>
           <div className="flex justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
             <p className="text-2xl text-gray-400 dark:text-gray-500 w-5/6">
               <label
@@ -127,8 +132,20 @@ const FingerRegisterPage = () => {
               </div>
             </p>
           </div>
+          <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 ">
+          <div className="flex items-center justify-center h-20 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+            <p className="text-2xl text-gray-400 dark:text-gray-500 ">
+              <button
+                type="button"
+                onClick={registerFinger}
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full"
+              >
+                Click to register
+              </button>
+            </p>
+          </div>
           <div className="grid grid-cols-3 gap-4 mb-4">
-            <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="flex items-center justify-center h-30 rounded bg-gray-50 dark:bg-gray-800">
               <p className="text-2xl text-gray-400 dark:text-gray-500">
                 {!img1 ? (
                   <img
@@ -143,7 +160,7 @@ const FingerRegisterPage = () => {
                 )}
               </p>
             </div>
-            <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="flex items-center justify-center h-30 rounded bg-gray-50 dark:bg-gray-800">
               <p className="text-2xl text-gray-400 dark:text-gray-500">
                 {!img2 ? (
                   <img
@@ -158,7 +175,7 @@ const FingerRegisterPage = () => {
                 )}
               </p>
             </div>
-            <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="flex items-center justify-center h-30 rounded bg-gray-50 dark:bg-gray-800">
               <p className="text-2xl text-gray-400 dark:text-gray-500">
                 {!img3 ? (
                   <img
@@ -173,18 +190,21 @@ const FingerRegisterPage = () => {
                 )}
               </p>
             </div>
+            </div>
           </div>
-          <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+          
+          <div className="flex items-center justify-center h-24 mb-4 rounded bg-gray-50 dark:bg-gray-800">
             <p className="text-2xl text-gray-400 dark:text-gray-500 ">
               <button
                 type="button"
-                onClick={registerFinger}
+                onClick={submitFormHandle}
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full"
               >
-                Register Finger
+                Send to register
               </button>
             </p>
           </div>
+          </form>
           <div className="flex items-center justify-center h-96  mb-4 rounded bg-gray-50 dark:bg-gray-800">
             <div className="w-5/6 relative overflow-y-scroll h-full shadow-md sm:rounded-lg">
               <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
