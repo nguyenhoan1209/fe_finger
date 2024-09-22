@@ -2,6 +2,8 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+// feat 1
+// feat 2
 const Sidebar = () => {
   const [token, setToken] = useContext(AuthContext);
   const navigate = useNavigate()
