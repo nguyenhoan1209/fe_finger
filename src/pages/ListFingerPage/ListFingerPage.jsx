@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import AuthContext from "../../context/AuthContext";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ListFingerPage = () => {
   const [token, setToken] = useContext(AuthContext);
   const [cif, setCif] = useState("");
   const [listFinger, setListFinger] = useState(null);
   const [loaded, setLoaded] = useState(false);
+
 
   const getListFinger = async () => {
     const bodyForm = new FormData();
