@@ -26,7 +26,9 @@ const FingerVerifyPage = () => {
       } else {
         console.log("Something went register finger!");
       }
-  
+    };
+    const handleVerifyForm = async (e) =>{
+      e.preventDefault();
       if (imgVerify) {
         const fingerForm = new FormData();
         fingerForm.append("cif", cif);
@@ -46,16 +48,21 @@ const FingerVerifyPage = () => {
   
         const datafinger = await resultResponse.json();
         if (datafinger.status == 0) {
-          toast.success("Verify Successfully !", {
+          if (datafinger.matching == true){
+          toast.success("Matching!", {
             position: "top-center",
-          });
+          });} else{
+            toast.warning("Unmatching!", {
+              position: "top-center"
+            })
+          }
         } else {
           toast.error("Verify Fail !", {
             position: "top-center",
           });
         }
       }
-    };
+    }
   
     return (
       <>
@@ -63,6 +70,7 @@ const FingerVerifyPage = () => {
   
         <div className="p-4 sm:ml-64">
           <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+            <form onSubmit={handleVerifyForm}>
             <div className="flex justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
               <p className="text-2xl text-gray-400 dark:text-gray-500 w-5/6">
                 <label
@@ -121,13 +129,25 @@ const FingerVerifyPage = () => {
               </div>
               </p>
             </div>
+            <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 ">
+            <div className="flex items-center justify-center h-20 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+              <p className="text-2xl text-gray-400 dark:text-gray-500 ">
+                <button
+                  type="button"
+                  onClick={verifyFinger}
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full"
+                >
+                  Click to register
+                </button>
+              </p>
+            </div>
             <div className="grid grid-cols-3 gap-4 mb-4">
-              <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+              <div className="flex items-center justify-center h-30 rounded bg-gray-50 dark:bg-gray-800">
                 <p className="text-2xl text-gray-400 dark:text-gray-500">
                   
                 </p>
               </div>
-              <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+              <div className="flex items-center justify-center h-30 rounded bg-gray-50 dark:bg-gray-800">
                 <p className="text-2xl text-gray-400 dark:text-gray-500">
                   {!imgVerify ? (
                     <img
@@ -142,23 +162,25 @@ const FingerVerifyPage = () => {
                   )}
                 </p>
               </div>
-              <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+              <div className="flex items-center justify-center h-30 rounded bg-gray-50 dark:bg-gray-800">
                 <p className="text-2xl text-gray-400 dark:text-gray-500">
                   
                 </p>
               </div>
+              </div>
             </div>
-            <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+            
+            <div className="flex items-center justify-center h-24 mb-4 rounded bg-gray-50 dark:bg-gray-800">
               <p className="text-2xl text-gray-400 dark:text-gray-500 ">
                 <button
-                  type="button"
-                  onClick={verifyFinger}
+                  type="submit"
                   className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                 >
-                  Verify Finger
+                  Send to verify
                 </button>
               </p>
             </div>
+            </form>
             <div className="flex items-center justify-center h-96  mb-4 rounded bg-gray-50 dark:bg-gray-800">
               <div className="w-5/6 relative overflow-y-scroll h-full shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
